@@ -11,9 +11,20 @@ namespace Alone_Revisal.Models
     [Table("Salariat")]
     public class Salariat
     {
-        public string Nume { get; set; }
-        public string Prenume { get; set; }
         [Key]
+        public Guid Id { get; set; }       
+        public string Nume { get; set; }
+        public string Prenume { get; set; }        
         public string CNP { get; set; }
+        public string CnpVechi  { get; set; }
+        public int TipActualizare { get; set; }
+        public int TipActIdentitate { get; set; }
+        public string SerieItm { get; set; }
+        public string NumarItm { get; set; }
+        public string Adresa { get; set; }
+        public string Mentiuni { get; set; }
+        public int Activ { get; set; }
+        public int Radiat { get; set; }
+        public int Apatrid { get; set; }
     }
 }
