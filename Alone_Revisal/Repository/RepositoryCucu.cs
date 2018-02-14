@@ -30,10 +30,6 @@ namespace Alone_Revisal.Repository
             return _cucuContext.Pontaje.FirstOrDefault(p => p.CNP == cnp);
         }
 
-        IActionResult ICucuRepository.UpdatePontaj(string cnp, DateTime dataPontaj, bool prezenta)
-        {
-
-            return ;
-        }
+ 
     }
 }
