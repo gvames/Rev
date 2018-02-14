@@ -20,17 +20,20 @@ namespace Alone_Revisal.Repository
 
         IEnumerable<Pontaj> ICucuRepository.GetPontajAll()
         {
+            //returneaza toti angajatii
             return _cucuContext.Pontaje;
         }
 
         Pontaj ICucuRepository.GetPontajByCNP(string cnp)
         {
-            return _cucuContext.
+            //returneaza o singura inregistrare dupa CNP
+            return _cucuContext.Pontaje.FirstOrDefault(p => p.CNP == cnp);
         }
 
-        IActionResult ICucuRepository.UpdatePontaj(DateTime dataPontaj, bool prezenta)
+        IActionResult ICucuRepository.UpdatePontaj(string cnp, DateTime dataPontaj, bool prezenta)
         {
-            throw new NotImplementedException();
+
+            return ;
         }
     }
 }
