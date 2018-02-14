@@ -14,6 +14,7 @@ namespace Alone_Revisal.Context
 
         }
         public DbSet<Salariat> Angajati { get; set; }
-        
+        public DbSet<Contract> Contracts { get; set; }
+        public DbSet<ContractStare> ContractStares { get; set; }
     }
 }
