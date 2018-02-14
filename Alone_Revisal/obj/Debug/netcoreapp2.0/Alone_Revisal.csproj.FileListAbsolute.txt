@@ -9,3 +9,14 @@ C:\Users\george.vames01\source\repos\Alone_Revisal\Alone_Revisal\obj\Debug\netco
 C:\Users\george.vames01\source\repos\Alone_Revisal\Alone_Revisal\obj\Debug\netcoreapp2.0\Alone_Revisal.AssemblyInfo.cs
 C:\Users\george.vames01\source\repos\Alone_Revisal\Alone_Revisal\obj\Debug\netcoreapp2.0\Alone_Revisal.dll
 C:\Users\george.vames01\source\repos\Alone_Revisal\Alone_Revisal\obj\Debug\netcoreapp2.0\Alone_Revisal.pdb
+C:\Users\razva\Source\Repos\Rev\Alone_Revisal\obj\Debug\netcoreapp2.0\Alone_Revisal.csprojResolveAssemblyReference.cache
+C:\Users\razva\Source\Repos\Rev\Alone_Revisal\obj\Debug\netcoreapp2.0\Alone_Revisal.csproj.CoreCompileInputs.cache
+C:\Users\razva\Source\Repos\Rev\Alone_Revisal\obj\Debug\netcoreapp2.0\Alone_Revisal.AssemblyInfoInputs.cache
+C:\Users\razva\Source\Repos\Rev\Alone_Revisal\obj\Debug\netcoreapp2.0\Alone_Revisal.AssemblyInfo.cs
+C:\Users\razva\Source\Repos\Rev\Alone_Revisal\obj\Debug\netcoreapp2.0\Alone_Revisal.dll
+C:\Users\razva\Source\Repos\Rev\Alone_Revisal\obj\Debug\netcoreapp2.0\Alone_Revisal.pdb
+C:\Users\razva\Source\Repos\Rev\Alone_Revisal\bin\Debug\netcoreapp2.0\Alone_Revisal.deps.json
+C:\Users\razva\Source\Repos\Rev\Alone_Revisal\bin\Debug\netcoreapp2.0\Alone_Revisal.runtimeconfig.json
+C:\Users\razva\Source\Repos\Rev\Alone_Revisal\bin\Debug\netcoreapp2.0\Alone_Revisal.runtimeconfig.dev.json
+C:\Users\razva\Source\Repos\Rev\Alone_Revisal\bin\Debug\netcoreapp2.0\Alone_Revisal.dll
+C:\Users\razva\Source\Repos\Rev\Alone_Revisal\bin\Debug\netcoreapp2.0\Alone_Revisal.pdb

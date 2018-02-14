@@ -13123,7 +13123,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\george.vames01\\.nuget\\packages\\": {},
+    "C:\\Users\\razva\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -13132,18 +13133,20 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\george.vames01\\source\\repos\\Alone_Revisal\\Alone_Revisal\\Alone_Revisal.csproj",
+      "projectUniqueName": "C:\\Users\\razva\\Source\\Repos\\Rev\\Alone_Revisal\\Alone_Revisal.csproj",
       "projectName": "Alone_Revisal",
-      "projectPath": "C:\\Users\\george.vames01\\source\\repos\\Alone_Revisal\\Alone_Revisal\\Alone_Revisal.csproj",
-      "packagesPath": "C:\\Users\\george.vames01\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\george.vames01\\source\\repos\\Alone_Revisal\\Alone_Revisal\\obj\\",
+      "projectPath": "C:\\Users\\razva\\Source\\Repos\\Rev\\Alone_Revisal\\Alone_Revisal.csproj",
+      "packagesPath": "C:\\Users\\razva\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\razva\\Source\\Repos\\Rev\\Alone_Revisal\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\george.vames01\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\razva\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"

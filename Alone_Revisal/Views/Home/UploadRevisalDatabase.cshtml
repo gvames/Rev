@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "UploadRevisalDatabase";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UploadRevisalDatabase</h2>
+
+<form method="post" enctype="multipart/form-data" action="/Home/UploadDataBase">
+    <div class="form-group">
+        <label for="file">Choose file to upload</label>
+        <input type="file" class="form-control-file" id="file" name="file" multiple>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>

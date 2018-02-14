@@ -25,7 +25,7 @@ namespace Alone_Revisal.Repository
 
         Pontaj ICucuRepository.GetPontajByCNP(string cnp)
         {
-            return _cucuContext.
+            return _cucuContext.Pontaje.FirstOrDefault(p => p.CNP == cnp);
         }
 
         IActionResult ICucuRepository.UpdatePontaj(DateTime dataPontaj, bool prezenta)

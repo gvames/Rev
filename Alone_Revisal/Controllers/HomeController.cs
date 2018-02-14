@@ -6,16 +6,21 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Alone_Revisal.Models;
 using Alone_Revisal.Interfaces;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace Alone_Revisal.Controllers
 {
     public class HomeController : Controller
     {
         IRevisalRepository _irevisal;
+        private IHostingEnvironment _hostingEnvironment;
 
-        public HomeController(IRevisalRepository revisalRepository)
+        public HomeController(IRevisalRepository revisalRepository, IHostingEnvironment hostingEnvironment)
         {
             _irevisal = revisalRepository;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         public IActionResult Index()
@@ -60,6 +65,32 @@ namespace Alone_Revisal.Controllers
 
             return View(_irevisal.GetAngajatByCNP("1550704131229"));
 
+        }
+
+        public IActionResult UploadRevisalDatabase()
+        {
+            ViewData["Mess"] = "Employee from Revisal";
+
+            return View();
+
+        }
+
+        public IActionResult UploadDataBase(IFormFile file)
+        {
+            string ext = Path.GetExtension(file.FileName);
+
+            if (ext != ".db")
+            {
+                return PartialView("failtoupload");
+            }
+
+            if (file != null)
+            {
+                string fileName = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(file.FileName));
+                file.CopyTo(new FileStream(fileName, FileMode.Create));
+            }
+
+            return View();
         }
 
         public IActionResult Error()
