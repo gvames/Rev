@@ -9,15 +9,15 @@ namespace Alone_Revisal.ViewModels
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+        [Display(Name = "User name")]
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [Required]
-        public string Role { get; set; }
+        public string CNP { get; set; }
 
         public string ReturnUrl { get; set; }
     }

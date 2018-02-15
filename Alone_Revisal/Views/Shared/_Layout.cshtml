@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
+
+@inject SignInManager<Utilizator> SignInManager
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -17,35 +22,55 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Alone_Revisal</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Salariati_Revisal">SalariatiRevisal</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Cucu">Cucu</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Cucu_2">Cucu_2</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="UploadRevisalDatabase">Upload Revisal Database</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Brand</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a asp-area="" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Cucu">Lista Salariati</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Cucu_2">Detalii Salariat</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="UploadRevisalDatabase">Upload Revisal Database</a></li>
+                    </ul>
+                    @*<form class="navbar-form navbar-left">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>*@
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <form asp-controller="Account" asp-action="Logout" method="post" id="logoutForm">
+                                <input type="submit" class="btn btn-default btn-outline btn-circle collapsed" value="Logout" />
+                            </form>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+
+     
+    }
+
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2018 - Alone_Revisal</p>
+            @*<p>&copy; 2018 - Alone_Revisal</p>*@
         </footer>
     </div>
 

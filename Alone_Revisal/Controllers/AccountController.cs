@@ -36,7 +36,7 @@ namespace Alone_Revisal.Controllers
             if (!ModelState.IsValid)
                 return View(loginViewModel);
 
-            var user = await _userManager.FindByEmailAsync(loginViewModel.Email);
+            var user = await _userManager.FindByNameAsync(loginViewModel.UserName);
 
             if (user != null)
             {
@@ -61,24 +61,28 @@ namespace Alone_Revisal.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(LoginViewModel loginViewModel)
+        public async Task<IActionResult> Register(RegisterViewModel registerViewModel)
         {
             if (ModelState.IsValid)
             {
-                var user = new Utilizator() { Email = loginViewModel.Email };
-                var result = await _userManager.CreateAsync(user, loginViewModel.Password);
+                var user = new Utilizator()
+                {
+                    UserName = registerViewModel.UserName,
+                    CNP = registerViewModel.CNP
+                };
+                var result = await _userManager.CreateAsync(user, registerViewModel.Password);
 
                 if (result.Succeeded)
                     return RedirectToAction("Index","Home");
             }
-            return View(loginViewModel);
+            return View("Login", registerViewModel);
         }
 
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
     }
 }
