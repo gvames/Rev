@@ -1,6 +1,6 @@
 ﻿using Alone_Revisal.Context;
 using Alone_Revisal.Interfaces;
-using Alone_Revisal.Models;
+using Alone_Revisal.RevisalModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,14 +18,14 @@ namespace Alone_Revisal.Repository
         {
             _revisalContext = revisalContext;
         }
-        IEnumerable<Salariat> IRevisalRepository.GetAllAngajat()
+        IEnumerable<Salariat> IRevisalRepository.GetAllSalariat()
         {
-            return _revisalContext.Angajati;
+            return _revisalContext.Salariati;
         }
 
-        Salariat IRevisalRepository.GetAngajatByCNP(string cnp)
+        Salariat IRevisalRepository.GetSalariatByCNP(string cnp)
         {
-            return _revisalContext.Angajati.FirstOrDefault(p => p.CNP == cnp);
+            return _revisalContext.Salariati.FirstOrDefault(p => p.CNP == cnp);
         }
     }
 }

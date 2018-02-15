@@ -9,10 +9,11 @@ namespace Alone_Revisal.Models
 {
     public class Pontaj
     {
-        public string Nume { get; set; }
-        public string Prenume { get; set; }
         [Key]
         public string CNP { get; set; }
+        public string Nume { get; set; }
+        public string Prenume { get; set; }
+        public string CNPResponsabil { get; set; }
         public DateTime DataPontaj { get; set; }
         public Boolean Prezenta { get; set; }
     }

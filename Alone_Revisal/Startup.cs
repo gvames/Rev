@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Alone_Revisal.Context;
 using Alone_Revisal.Interfaces;
+using Alone_Revisal.Models;
 using Alone_Revisal.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,6 +29,9 @@ namespace Alone_Revisal
         {
             //add SQLlite database
             services.AddDbContext<RevisalContext>(options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<AppDbContext>(options => options.UseSqlite(Configuration.GetConnectionString("LocalDatabaseConnection")));
+            services.AddIdentity<Utilizator, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+
             //add Transient for ReposytoryRevisal
             services.AddTransient<IRevisalRepository, RepositoryRevisal>();
             services.AddMvc();
@@ -46,6 +51,7 @@ namespace Alone_Revisal
             }
 
             app.UseStaticFiles();
+            app.UseIdentity();
 
             app.UseMvc(routes =>
             {

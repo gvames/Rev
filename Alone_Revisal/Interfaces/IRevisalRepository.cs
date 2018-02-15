@@ -1,4 +1,5 @@
 ﻿using Alone_Revisal.Models;
+using Alone_Revisal.RevisalModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,9 @@ namespace Alone_Revisal.Interfaces
 {
     public interface IRevisalRepository
     {
-        IEnumerable<Salariat> GetAllAngajat();
+        IEnumerable<Salariat> GetAllSalariat();
 
-        Salariat GetAngajatByCNP(string cnp);
+        Salariat GetSalariatByCNP(string cnp);
 
     }
 }

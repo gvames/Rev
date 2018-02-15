@@ -9,9 +9,11 @@ using Alone_Revisal.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Alone_Revisal.Controllers
 {
+
     public class HomeController : Controller
     {
         IRevisalRepository _irevisal;
@@ -55,7 +57,7 @@ namespace Alone_Revisal.Controllers
         {
             ViewData["Mess"] = "Employee from Revisal";
           
-            return View(_irevisal.GetAllAngajat());
+            return View(_irevisal.GetAllSalariat());
 
         }
 
@@ -63,7 +65,7 @@ namespace Alone_Revisal.Controllers
         {
             ViewData["Mess"] = "Employee from Revisal";
 
-            return View(_irevisal.GetAngajatByCNP("1550704131229"));
+            return View(_irevisal.GetSalariatByCNP("1550704131229"));
 
         }
 
