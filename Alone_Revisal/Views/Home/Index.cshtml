@@ -4,13 +4,54 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="container">
-   Welcome, sir!
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--4-col">
+        <div class="demo-card-square mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title mdl-card--expand" id="activeClients">
+                <h2 class="mdl-card__title-text homeLabel">Clienti activi</h2>
+            </div>
+            <div class="mdl-card__suporting-text">
+                Lista clienti activi.
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a class="mdl-button mdl-button--colored" asp-controller="Home" asp-action="Cucu">
+                    Afiseaza clienti
+                </a>
+            </div>
+        </div>
+    </div>
 
-    <ul>
-        <li><a id="registerLink" asp-controller="Account" asp-action="Register">Register</a></li>
-        <li><a id="loginLink" asp-controller="Account" asp-action="Login">Login</a></li>
-    </ul>
+    <div class="mdl-cell mdl-cell--4-col">
+        <div class="demo-card-square mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title mdl-card--expand" id="detailsClient">
+                <h2 class="mdl-card__title-text homeLabel">Detalii clienti</h2>
+            </div>
+            <div class="mdl-card__suporting-text">
+                Detalii client.
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a class="mdl-button mdl-button--colored" asp-controller="Home" asp-action="Cucu_2">
+                    Afiseaza detalii client
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="mdl-cell mdl-cell--4-col">
+        <div class="demo-card-square mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title mdl-card--expand" id="updateRevisal">
+                <h2 class="mdl-card__title-text homeLabel">Incarca baza Revisal</h2>
+            </div>
+            <div class="mdl-card__suporting-text">
+                Incarca baza Revisal.
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a class="mdl-button mdl-button--colored" asp-controller="Home" asp-action="Cucu">
+                    Incarca baza
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 
 
