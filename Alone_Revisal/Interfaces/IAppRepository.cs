@@ -12,5 +12,6 @@ namespace Alone_Revisal.Interfaces
         IEnumerable<Pontaj> GetPontajAll();
         Pontaj GetPontajByCNP(string cnp);
         //ContentResult UpdatePontaj(string cnp, DateTime dataPontaj, Boolean prezenta);
+        Boolean InsertPontaje(string cnp);
     }
 }

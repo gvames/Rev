@@ -16,13 +16,15 @@ namespace Alone_Revisal.Controllers
 
     public class HomeController : Controller
     {
-        IRevisalRepository _irevisal;
+       private IRevisalRepository _irevisal;
         private IHostingEnvironment _hostingEnvironment;
+        private IAppRepository _appRepository;
 
-        public HomeController(IRevisalRepository revisalRepository, IHostingEnvironment hostingEnvironment)
+        public HomeController(IRevisalRepository revisalRepository, IHostingEnvironment hostingEnvironment, IAppRepository appRepository)
         {
             _irevisal = revisalRepository;
             _hostingEnvironment = hostingEnvironment;
+            _appRepository = appRepository;
         }
 
         public IActionResult Index()
@@ -43,12 +45,12 @@ namespace Alone_Revisal.Controllers
 
             return View();
         }
-  
+
 
         public IActionResult AngajatiActivi()
         {
             ViewData["Mess"] = "Employee from Revisal";
-          
+
             return View(_irevisal.GetAllSalariat());
 
         }
@@ -90,6 +92,20 @@ namespace Alone_Revisal.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+     
+        public IActionResult InsertPontaje(string cnp )
+        {
+            if (ModelState.IsValid)
+            {
+                _appRepository.InsertPontaje(cnp);
+            }
+
+            ViewData["Mess"] = "Employee from Revisal";
+
+            return View();
+
         }
     }
 }

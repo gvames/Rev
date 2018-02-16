@@ -13,6 +13,7 @@ namespace Alone_Revisal.Repository
     {
         private readonly AppDbContext _cucuContext;
 
+
         public RepositoryApp(AppDbContext CucuContext)
         {
             _cucuContext = CucuContext;
@@ -29,7 +30,32 @@ namespace Alone_Revisal.Repository
             //returneaza o singura inregistrare dupa CNP
             return _cucuContext.Pontaje.FirstOrDefault(p => p.CNP == cnp);
         }
+        
 
- 
+        Boolean IAppRepository.InsertPontaje(string cnp)
+        {
+     
+
+            var salariat = _cucuContext.Salariati.FirstOrDefault(s => s.CNP == cnp);
+
+            if (salariat != null)
+            {
+                Pontaj pontaj = new Pontaj
+                {
+                    CNP = salariat.CNP,
+                    Nume = salariat.Nume,
+                    Prenume = salariat.Prenume,
+                    CNPResponsabil = salariat.CnpVechi,
+                    DataPontaj = DateTime.Now,
+                    Prezenta = true
+                };
+                var result = _cucuContext.Pontaje.Add(pontaj);
+            }
+           
+
+          
+
+            return true;
+        }
     }
 }

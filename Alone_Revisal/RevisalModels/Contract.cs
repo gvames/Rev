@@ -12,6 +12,7 @@ namespace Alone_Revisal.RevisalModels
     {
         [Key]
         public Guid Id { get; set; }
+        public Guid SalariatId { get; set; }
         public int TipActualizare { get; set; }
         public DateTime DataConsemnare { get; set; }
         public int TipDurata { get; set; }

@@ -20,6 +20,9 @@ namespace Alone_Revisal.Repository
         }
         IEnumerable<Salariat> IRevisalRepository.GetAllSalariat()
         {
+            var result = from t in _revisalContext.Salariati
+                         join sa in _revisalContext.Contracts on t.Id equals sa.SalariatId
+                         select t;
             return _revisalContext.Salariati;
         }
 

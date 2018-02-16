@@ -34,6 +34,7 @@ namespace Alone_Revisal
 
             //add Transient for ReposytoryRevisal
             services.AddTransient<IRevisalRepository, RepositoryRevisal>();
+            services.AddTransient<IAppRepository, RepositoryApp>();
             services.AddMvc();
         }
 
@@ -57,7 +58,8 @@ namespace Alone_Revisal
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Account}/{action=Login}/{id?}");
+                    //template: "{controller=Account}/{action=Login}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
