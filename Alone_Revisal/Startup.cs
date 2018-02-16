@@ -51,7 +51,7 @@ namespace Alone_Revisal
             }
 
             app.UseStaticFiles();
-            app.UseIdentity();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

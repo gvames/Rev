@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Alone_Revisal.Controllers
-{
+{   
     public class AccountController : Controller
     {
         private readonly UserManager<Utilizator> _userManager;
@@ -78,7 +78,7 @@ namespace Alone_Revisal.Controllers
             return View("Login", registerViewModel);
         }
 
-        [HttpPost]
+
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();

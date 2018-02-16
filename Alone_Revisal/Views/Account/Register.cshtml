@@ -17,11 +17,13 @@
                     <p>Error:</p>
                     <span></span>
                 </div>
+                <div asp-validation-summary="All" class="alert-danger"></div>
 
                 <div class="form-group">
                     <label for="email" class="col-md-3 control-label">Email</label>
                     <div class="col-md-9">
                         <input asp-for="UserName" type="text" class="form-control" name="username" placeholder="User name">
+                        <span asp-validation-for="UserName" class="alert-danger"></span>
                     </div>
                 </div>
 
@@ -29,18 +31,21 @@
                     <label for="firstname" class="col-md-3 control-label">First Name</label>
                     <div class="col-md-9">
                         <input type="text" class="form-control" name="firstname" placeholder="First Name">
+                        @*<span asp-validation-for="firstname" class="alert-danger"></span>*@
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="lastname" class="col-md-3 control-label">CNP</label>
                     <div class="col-md-9">
                         <input asp-for="CNP" type="text" class="form-control" name="cnp" placeholder="CNP">
+                        <span asp-validation-for="CNP" class="alert-danger"></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="password" class="col-md-3 control-label">Password</label>
                     <div class="col-md-9">
                         <input asp-for="Password" type="password" class="form-control" name="password" placeholder="Password">
+                        <span asp-validation-for="Password" class="alert-danger"></span>
                     </div>
                 </div>
 

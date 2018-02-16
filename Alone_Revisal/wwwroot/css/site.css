@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 100px;
     padding-bottom: 20px;
 }
 
@@ -8,22 +8,6 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-}
-
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
-}
-
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
-}
-
-/* QR code generator */
-#qrCode {
-    margin: 15px;
 }
 
 /* Hide/rearrange for smaller screens */
@@ -102,8 +86,12 @@
     padding: 4px;
 }
 
-#activeClients {
-    background: url('/images/clients.jpg') bottom right 15% no-repeat #555;
+#angajat {
+    background: url('/images/clients.jpeg');
+    background-size: cover; /* <------ */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #555;
 }
 
 #catalogIndexTable {
@@ -118,16 +106,24 @@
         background-color: #eee;
     }
 
-#detailsClient {
-    background: url('/images/pontaj.jpeg') bottom left 15% no-repeat #555;
+#detalii {
+    background: url('/images/pontaj.jpeg');
+    background-size: cover; /* <------ */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #555;
 }
 
 .branchInfo {
     padding-top: 30px;
 }
 
-#updateRevisal {
-    background: url('/images/database.jpeg') bottom right 15% no-repeat #555;
+#database {
+    background: url('/images/database.jpeg');
+    background-size: cover; /* <------ */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #555;
 }
 
 #assets {

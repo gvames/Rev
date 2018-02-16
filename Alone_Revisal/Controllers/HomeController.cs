@@ -43,17 +43,9 @@ namespace Alone_Revisal.Controllers
 
             return View();
         }
-
-        public IActionResult Salariati_Revisal()
-        {
-            ViewData["Mess"] = "Employee from Revisal";
-
-            return View();
-
-        }
   
 
-        public IActionResult Cucu()
+        public IActionResult AngajatiActivi()
         {
             ViewData["Mess"] = "Employee from Revisal";
           
@@ -61,7 +53,7 @@ namespace Alone_Revisal.Controllers
 
         }
 
-        public IActionResult Cucu_2()
+        public IActionResult DetaliiAngajati()
         {
             ViewData["Mess"] = "Employee from Revisal";
 

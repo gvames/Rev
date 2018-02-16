@@ -19,7 +19,7 @@
 <body>
     @if (SignInManager.IsSignedIn(User))
     {
-        <nav class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -29,7 +29,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Brand</a>
+                    <a class="navbar-brand" href="#">Alone_Revisal</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -37,8 +37,8 @@
                         <li class="active"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Cucu">Lista Salariati</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Cucu_2">Detalii Salariat</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="AngajatiActivi">Lista Salariati</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="DetaliiAngajati">Detalii Salariat</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="UploadRevisalDatabase">Upload Revisal Database</a></li>
                     </ul>
                     @*<form class="navbar-form navbar-left">
@@ -48,42 +48,11 @@
                         <button type="submit" class="btn btn-default">Submit</button>
                     </form>*@
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <form asp-controller="Account" asp-action="Logout" method="post" id="logoutForm">
-                                <input type="submit" class="btn btn-default btn-outline btn-circle collapsed" value="Logout" />
-                            </form>
-                        </li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Logout">Logout</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
-        </nav>
-
-        <div class="mdl-layout mdl-js-layout--fixed-header">
-            <header class="customer-header mdl-layout__header mdl-layoutheader--waterfall">
-                <div class="mdl-layout__header-row">
-                    <span class="mdl-layout-title logo"><a href="/">Alone Revisal</a></span>
-                    <div class="mdl-layout-spacer"></div>
-                    <nav class="mdl-navigation mdl-layout--large-screen-only">
-                        <a class="mdl-navigation__link" asp-controller="Home" asp-action="Index">Home</a>
-                        <a class="mdl-navigation__link" asp-area="" asp-controller="Home" asp-action="About">About</a>
-                        <a class="mdl-navigation__link" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
-                        <a class="mdl-navigation__link" asp-area="" asp-controller="Home" asp-action="Cucu">Lista Salariati</a>
-                        <a class="mdl-navigation__link" asp-area="" asp-controller="Home" asp-action="Cucu_2">Detalii Salariat</a>
-                        <a class="mdl-navigation__link" asp-area="" asp-controller="Home" asp-action="UploadRevisalDatabase">Upload Revisal Database</a>
-                    </nav>
-                </div>
-            </header>
-            <div class="mdl-layout__drawer">
-                <span class="mdl-layout-title">Lakeview Library</span>
-                <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link" asp-controller="Home" asp-action="Index">Home</a>
-                    <a class="mdl-navigation__link" asp-controller="Catalog" asp-action="Index">Catalog</a>
-                    <a class="mdl-navigation__link" asp-controller="Patron" asp-action="Index">Patrons</a>
-                    <a class="mdl-navigation__link" asp-controller="Branch" asp-action="Index">Branches</a>
-                </nav>
-            </div>
-        </div>
-     
+        </nav>    
     }
 
     <div class="container body-content">
