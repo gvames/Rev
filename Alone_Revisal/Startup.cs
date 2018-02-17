@@ -12,24 +12,27 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Alone_Revisal.Utils;
 
 namespace Alone_Revisal
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
+            Env = env;
         }
 
         public IConfiguration Configuration { get; }
+        public IHostingEnvironment Env { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             //add SQLlite database
-            services.AddDbContext<RevisalContext>(options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDbContext<AppDbContext>(options => options.UseSqlite(Configuration.GetConnectionString("LocalDatabaseConnection")));
+            services.AddDbContext<RevisalContext>(options => options.UseSqlite(Helper.GetRevisalConfigurationConnectionString(Configuration, Env)));
+            services.AddDbContext<AppDbContext>(options => options.UseSqlite(Helper.GetLocalConfigurationConnectionString(Configuration, Env)));
             services.AddIdentity<Utilizator, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
 
             //add Transient for ReposytoryRevisal

@@ -1,5 +1,6 @@
 ﻿using Alone_Revisal.Context;
 using Alone_Revisal.Interfaces;
+using Alone_Revisal.Models;
 using Alone_Revisal.RevisalModels;
 using System;
 using System.Collections.Generic;
@@ -18,12 +19,31 @@ namespace Alone_Revisal.Repository
         {
             _revisalContext = revisalContext;
         }
-        IEnumerable<Salariat> IRevisalRepository.GetAllSalariat()
+        IEnumerable<Angajat> IRevisalRepository.GetAllSalariat()
         {
-            var result = from t in _revisalContext.Salariati
-                         join sa in _revisalContext.Contracts on t.Id equals sa.SalariatId
-                         select t;
-            return _revisalContext.Salariati;
+
+            var listOfSalariat = (from con in _revisalContext.Contracts
+                              join conStare in _revisalContext.ContractStare on con.StareCurentaId equals conStare.Id
+                              join sal in _revisalContext.Salariati on con.SalariatId equals sal.Id
+                              where conStare.Tip != 3
+                              select new Angajat
+                              {
+                                  CNP = sal.CNP,
+                                  CnpVechi = sal.CnpVechi,
+                                  Adresa = sal.Adresa,
+                                  Activ = sal.Activ,
+                                  Apatrid = sal.Apatrid,
+                                  TipActIdentitate = sal.TipActIdentitate,
+                                  TipActualizare = sal.TipActualizare,
+                                  Nume = sal.Nume,
+                                  Prenume = sal.Prenume,
+                                  Mentiuni = sal.Mentiuni,
+                                  NumarItm = sal.NumarItm,
+                                  Radiat = sal.Radiat,
+                                  SerieItm = sal.SerieItm
+                              });
+
+            return listOfSalariat;
         }
 
         Salariat IRevisalRepository.GetSalariatByCNP(string cnp)

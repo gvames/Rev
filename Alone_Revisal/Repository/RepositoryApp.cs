@@ -1,6 +1,7 @@
 ﻿using Alone_Revisal.Context;
 using Alone_Revisal.Interfaces;
 using Alone_Revisal.Models;
+using Alone_Revisal.Utils;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,32 +12,47 @@ namespace Alone_Revisal.Repository
 {
     public class RepositoryApp : IAppRepository
     {
-        private readonly AppDbContext _cucuContext;
+        private readonly AppDbContext _appDbContext;
 
 
-        public RepositoryApp(AppDbContext CucuContext)
+        public RepositoryApp(AppDbContext appDbContext)
         {
-            _cucuContext = CucuContext;
+            _appDbContext = appDbContext;
+        }
+
+        public IQueryable<Angajat> GetAngajatiActiviAll()
+        {
+            return _appDbContext.Angajati;
+        }
+
+        public SQLExceptions InsertAngajat(IEnumerable<Angajat> angajati)
+        {
+            //insereaza lista de angajati in LocalDB
+           _appDbContext.Angajati.AddRange(angajati);
+            var result = _appDbContext.SaveChanges();
+
+            if (result == 0)
+                return SQLExceptions.UpdateFailed;
+
+            return SQLExceptions.Ok;
         }
 
         IEnumerable<Pontaj> IAppRepository.GetPontajAll()
         {
             //returneaza toti angajatii
-            return _cucuContext.Pontaje;
+            return _appDbContext.Pontaje;
         }
 
         Pontaj IAppRepository.GetPontajByCNP(string cnp)
         {
             //returneaza o singura inregistrare dupa CNP
-            return _cucuContext.Pontaje.FirstOrDefault(p => p.CNP == cnp);
+            return _appDbContext.Pontaje.FirstOrDefault(p => p.CNP == cnp);
         }
         
 
-        Boolean IAppRepository.InsertPontaje(string cnp)
+        SQLExceptions IAppRepository.InsertPontaje(string cnp)
         {
-     
-
-            var salariat = _cucuContext.Salariati.FirstOrDefault(s => s.CNP == cnp);
+            var salariat = _appDbContext.Angajati.FirstOrDefault(s => s.CNP == cnp);
 
             if (salariat != null)
             {
@@ -49,13 +65,12 @@ namespace Alone_Revisal.Repository
                     DataPontaj = DateTime.Now,
                     Prezenta = true
                 };
-                var result = _cucuContext.Pontaje.Add(pontaj);
+                 _appDbContext.Pontaje.Add(pontaj);
+                var result = _appDbContext.SaveChanges();
+                if (result == 0)
+                    return SQLExceptions.UpdateFailed;
             }
-           
-
-          
-
-            return true;
+            return SQLExceptions.Ok;
         }
     }
 }

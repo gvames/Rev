@@ -9,7 +9,7 @@ namespace Alone_Revisal.Interfaces
 {
     public interface IRevisalRepository
     {
-        IEnumerable<Salariat> GetAllSalariat();
+        IEnumerable<Angajat> GetAllSalariat();
 
         Salariat GetSalariatByCNP(string cnp);
 

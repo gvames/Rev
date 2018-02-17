@@ -10,10 +10,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using Microsoft.AspNetCore.Authorization;
+using Alone_Revisal.Utils;
 
 namespace Alone_Revisal.Controllers
 {
-
+    [Authorize]
     public class HomeController : Controller
     {
        private IRevisalRepository _irevisal;
@@ -32,30 +33,17 @@ namespace Alone_Revisal.Controllers
             return View();
         }
 
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-
         public IActionResult AngajatiActivi()
         {
             ViewData["Mess"] = "Employee from Revisal";
 
-            return View(_irevisal.GetAllSalariat());
+            var listaAngajatiActivi = _appRepository.GetAngajatiActiviAll();
+
+            return View(listaAngajatiActivi);
 
         }
 
-        public IActionResult DetaliiAngajati()
+        public IActionResult Pontaj()
         {
             ViewData["Mess"] = "Employee from Revisal";
 
@@ -73,20 +61,52 @@ namespace Alone_Revisal.Controllers
 
         public IActionResult UploadDataBase(IFormFile file)
         {
+            if (!CopyNewDB(file))
+                return Error();
+
+            return UpdateLocalDatabaseFromNewRevisal();
+        }
+
+        private IActionResult UpdateLocalDatabaseFromNewRevisal()
+        {
+            var newRevisal = _irevisal.GetAllSalariat();
+
+            if (newRevisal == null)
+                return PartialView("failtoupload");
+
+            var result = _appRepository.InsertAngajat(newRevisal);
+
+            if (result == SQLExceptions.UpdateFailed)
+                return Error();
+
+            return View();
+        }
+
+        private bool CopyNewDB(IFormFile file)
+        {
+            string dateNow = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+            string sourceFileName = Path.Combine(_hostingEnvironment.WebRootPath, @"Database\Revisal.db");
+            string destFileName = Path.Combine(_hostingEnvironment.WebRootPath, @"Database\Backup\Revisal" + dateNow + ".db");
             string ext = Path.GetExtension(file.FileName);
 
             if (ext != ".db")
             {
-                return PartialView("failtoupload");
+                return false;
+            }
+
+            if (System.IO.File.Exists(sourceFileName))
+            {
+                System.IO.File.Copy(sourceFileName, destFileName);
+                System.IO.File.Delete(sourceFileName);
             }
 
             if (file != null)
             {
-                string fileName = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(file.FileName));
+                string fileName = Path.Combine(_hostingEnvironment.WebRootPath, @"Database\" + Path.GetFileName(file.FileName));
                 file.CopyTo(new FileStream(fileName, FileMode.Create));
             }
 
-            return View();
+            return true;
         }
 
         public IActionResult Error()

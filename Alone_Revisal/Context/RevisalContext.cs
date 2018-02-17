@@ -16,6 +16,6 @@ namespace Alone_Revisal.Context
         }
         public DbSet<Salariat> Salariati { get; set; }
         public DbSet<Contract> Contracts { get; set; }
-        public DbSet<ContractStare> ContractStares { get; set; }
+        public DbSet<ContractStare> ContractStare { get; set; }
     }
 }

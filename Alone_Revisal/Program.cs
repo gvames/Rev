@@ -22,7 +22,7 @@ namespace Alone_Revisal
             {
                 // Retrieve your DbContext isntance here
                 var dbContext = scope.ServiceProvider.GetService<AppDbContext>();
-
+                
                 // place your DB seeding code here
                 DbInitializator.Initializate(dbContext);
             }

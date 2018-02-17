@@ -15,7 +15,7 @@ namespace Alone_Revisal.Context
 
         }
         public DbSet<Pontaj> Pontaje { get; set; }
-        public DbSet<Angajat> Salariati { get; set; }
+        public DbSet<Angajat> Angajati { get; set; }
         public DbSet<Santier> Santiere { get; set; }
         public DbSet<Certificare> Certificari { get; set; }
         public DbSet<Utilizator> Utilizatori { get; set; }

@@ -21,7 +21,7 @@ namespace Alone_Revisal.Models
         public string Mentiuni { get; set; }
         public int Activ { get; set; }
         public int Radiat { get; set; }
-        public int Apatrid { get; set; }
+        public int? Apatrid { get; set; }
 
         public virtual Santier Santiere { get; set; }
         public virtual Certificare Certificari { get; set; }
