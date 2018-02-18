@@ -88,6 +88,14 @@
     background-color: #555;
 }
 
+#users {
+    background: url('/images/users.png');
+    background-size: cover; /* <------ */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #555;
+}
+
 #catalogIndexTable {
     font-size: 1.3em;
 }

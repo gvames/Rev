@@ -1,42 +1,44 @@
 ﻿@model IEnumerable<Alone_Revisal.Models.Angajat>
 
 @{
-    ViewData["Title"] = "Cucu";
+    ViewData["Title"] = "Angajati activi";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>View</h2>
+<div class="top-buffer"></div>
+<div class="panel panel-primary">
+    <div class="panel-heading panel-head">Anagajati activi</div>
+    <div class="panel-body">
+        <div class="top-buffer"></div>
+        <table class="table table-bordered table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th>Nume</th>
+                    <th>Prenume</th>
+                    <th>CNP</th>
+                    <th>Actiuni</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Nume</td>
+                        <td>@item.Prenume</td>
+                        <td>@item.CNP</td>
+                        <td>
+                            <a id="addEditApplicationRoleModal" data-toggle="modal" asp-action="AddEditApplicationRole" asp-route-id="@item.CNP" data-target="#modal-action-application-role"
+                               class="btn btn-info">
+                                <i class="glyphicon glyphicon-pencil"></i>  Editeaza
+                            </a>
+                            <a id="deleteApplicationRoleModal" data-toggle="modal" asp-action="DeleteApplicationRole" asp-route-id="@item.CNP" data-target="#modal-action-application-role" class="btn btn-danger">
+                                <i class="glyphicon glyphicon-trash"></i>  Sterge
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Nume)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Prenume)
-                </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nume)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Prenume)
-            </td>
-            <td>
-                <a asp-action="InsertPontaje" asp-route-id="@item.CNP">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CNP">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CNP">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>

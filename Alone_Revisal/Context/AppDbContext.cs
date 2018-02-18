@@ -1,4 +1,5 @@
 ﻿using Alone_Revisal.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Alone_Revisal.Context
 {
-    public class AppDbContext : IdentityDbContext<Utilizator>
+    public class AppDbContext : IdentityDbContext<Utilizator, ApplicationRole, string>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {

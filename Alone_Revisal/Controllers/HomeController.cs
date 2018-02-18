@@ -11,13 +11,14 @@ using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using Microsoft.AspNetCore.Authorization;
 using Alone_Revisal.Utils;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Alone_Revisal.Controllers
 {
     [Authorize]
     public class HomeController : Controller
     {
-       private IRevisalRepository _irevisal;
+        private IRevisalRepository _irevisal;
         private IHostingEnvironment _hostingEnvironment;
         private IAppRepository _appRepository;
 
@@ -26,6 +27,17 @@ namespace Alone_Revisal.Controllers
             _irevisal = revisalRepository;
             _hostingEnvironment = hostingEnvironment;
             _appRepository = appRepository;
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public IActionResult Administrare()
+        {
+            return View();
+        }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
 
         public IActionResult Index()
@@ -114,8 +126,8 @@ namespace Alone_Revisal.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-     
-        public IActionResult InsertPontaje(string cnp )
+        [HttpGet("/Home/InsertPontaje/{cnp}")]
+        public IActionResult InsertPontaje([FromRoute] string cnp)
         {
             if (ModelState.IsValid)
             {

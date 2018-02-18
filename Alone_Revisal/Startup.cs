@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Alone_Revisal.Utils;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace Alone_Revisal
 {
@@ -33,7 +34,7 @@ namespace Alone_Revisal
             //add SQLlite database
             services.AddDbContext<RevisalContext>(options => options.UseSqlite(Helper.GetRevisalConfigurationConnectionString(Configuration, Env)));
             services.AddDbContext<AppDbContext>(options => options.UseSqlite(Helper.GetLocalConfigurationConnectionString(Configuration, Env)));
-            services.AddIdentity<Utilizator, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+            services.AddIdentity<Utilizator, ApplicationRole>().AddEntityFrameworkStores<AppDbContext>();
 
             //add Transient for ReposytoryRevisal
             services.AddTransient<IRevisalRepository, RepositoryRevisal>();
@@ -55,6 +56,10 @@ namespace Alone_Revisal
             }
 
             app.UseStaticFiles();
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
             app.UseAuthentication();
 
             app.UseMvc(routes =>

@@ -15,10 +15,17 @@ namespace Alone_Revisal.Controllers
         private readonly UserManager<Utilizator> _userManager;
         private readonly SignInManager<Utilizator> _signInManager;
 
+
         public AccountController (UserManager<Utilizator> userManager, SignInManager<Utilizator> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+
+        }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
 
         public IActionResult Login(string returnUrl)
@@ -84,5 +91,6 @@ namespace Alone_Revisal.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login", "Account");
         }
+
     }
 }
