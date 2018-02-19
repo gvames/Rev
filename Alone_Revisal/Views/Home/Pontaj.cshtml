@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Alone_Revisal.Models.Pontaj>
+﻿@model List<Alone_Revisal.Models.Pontaj>
 
 @{
     ViewData["Title"] = "Pontaj";
@@ -28,13 +28,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    @for (int i=0; i < @Model.Count(); i++)
                     {
-                        <tr>
-                            <td> <input asp-for="@item.Nume" class="form-control"  />  <span asp-validation-for="@item.Nume" class="text-danger"></span></td>
-                            <td> <input asp-for="@item.Prenume" class="form-control" /> <span asp-validation-for="@item.Prenume" class="text-danger"></span></td>
-                            <td> <input type="checkbox" asp-for="@item.Prezenta" class="form-control" /> <span asp-validation-for="@item.Prezenta" class="text-danger"></span><input type="hidden" asp-for="@item.CNP" /></td>
-                        </tr>
+                    <tr>
+                        <td> <span>@Model[i].Nume</span></td>
+                        <td> <span>@Model[i].Prenume</span></td>
+                        <td> <input asp-for="@Model[i].Prezenta" type="checkbox" class="form-control"><input type="hidden" asp-for="@Model[i].CNP" /></td>
+                    </tr>
                     }
                 </tbody>
             </table>            
