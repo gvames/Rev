@@ -7,8 +7,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Alone_Revisal.Models
 {
+
+ 
     public class Pontaj
     {
+        
         [Key]
         public string CNP { get; set; }
         public string Nume { get; set; }
@@ -16,6 +19,7 @@ namespace Alone_Revisal.Models
         public string CNPResponsabil { get; set; }
         public DateTime DataPontaj { get; set; }
         public Boolean Prezenta { get; set; }
+        public Boolean Absenta { get; set; }
     }
 }
 
