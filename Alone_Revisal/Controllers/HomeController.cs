@@ -60,11 +60,11 @@ namespace Alone_Revisal.Controllers
             ViewData["Mess"] = "Employee from Revisal";
 
             // return View(_irevisal.GetSalariatByCNP("1550704131229"));
-            return View(_appRepository.GetPontajAll());
+            return View(_appRepository.GetPontajAll().ToList());
 
         }
         [HttpPost]
-        public IActionResult Pontaj(IEnumerable<Pontaj> pontaj)
+        public IActionResult Pontaj(List<Pontaj> pontaj)
         {
             if (ModelState.IsValid)
             {
