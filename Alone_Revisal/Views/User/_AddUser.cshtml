@@ -1,6 +1,6 @@
 ﻿@model Alone_Revisal.ViewModels.UserViewModel
 
-<form asp-action="AddUser" role="form">
+<form asp-action="AddUser" id="newuser" role="form">
     @await Html.PartialAsync("_ModalHeader", new ModalHeader { Heading = "Add User" })
     <div asp-validation-summary="All" class="alert-danger"></div>
     <div class="modal-body form-horizontal">

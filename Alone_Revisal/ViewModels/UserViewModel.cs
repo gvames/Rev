@@ -10,12 +10,12 @@ namespace Alone_Revisal.ViewModels
     public class UserViewModel
     {
         public string Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Campul Username e gol.")]
         public string UserName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Lipsa parola.")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Parola nu a fost confirmata.")]
         [Display(Name = "Confirm Password")]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
@@ -23,10 +23,10 @@ namespace Alone_Revisal.ViewModels
         public string Email { get; set; }
         public List<SelectListItem> ApplicationRoles { get; set; }
         public List<SelectListItem> StantiereDisponibile { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Alege un rol.")]
         [Display(Name = "Role")]
         public string ApplicationRoleId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Alege un santier.")]
         [Display(Name = "SantierID")]
         public int SantierID { get; set; }
         public string CNP { get; set; }

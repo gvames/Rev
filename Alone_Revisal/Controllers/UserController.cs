@@ -61,6 +61,7 @@ namespace Alone_Revisal.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddUser(UserViewModel model)
         {
             if (ModelState.IsValid)
@@ -84,6 +85,7 @@ namespace Alone_Revisal.Controllers
                             return RedirectToAction("AngajatiActivi", "Home");
                         }
                     }
+                    ViewBag.Message = "Userul a fost salvat.";
                 }
             }
             return View(model);

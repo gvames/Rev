@@ -47,11 +47,6 @@ namespace Alone_Revisal.Repository
             return SQLExceptions.Ok;
         }
 
-        IQueryable<Angajat> IAppRepository.GetAngajatiActiviAll()
-        {
-            throw new NotImplementedException();
-        }
-
         IEnumerable<Pontaj> IAppRepository.GetPontajAll()
         {
             //returneaza toti angajatii din tabela Pontaje

@@ -88,8 +88,8 @@
     background-color: #555;
 }
 
-#users {
-    background: url('/images/users.png');
+#roles {
+    background: url('/images/roles.jpg');
     background-size: cover; /* <------ */
     background-repeat: no-repeat;
     background-position: center center;

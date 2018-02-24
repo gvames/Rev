@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Alone_Revisal.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class HomeController : Controller
     {
         private IRevisalRepository _irevisal;
