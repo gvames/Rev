@@ -47,9 +47,14 @@ namespace Alone_Revisal.Repository
             return SQLExceptions.Ok;
         }
 
+        IQueryable<Angajat> IAppRepository.GetAngajatiActiviAll()
+        {
+            throw new NotImplementedException();
+        }
+
         IEnumerable<Pontaj> IAppRepository.GetPontajAll()
         {
-            //returneaza toti angajatii
+            //returneaza toti angajatii din tabela Pontaje
             return _appDbContext.Pontaje;
         }
 
@@ -58,7 +63,11 @@ namespace Alone_Revisal.Repository
             //returneaza o singura inregistrare dupa CNP
             return _appDbContext.Pontaje.FirstOrDefault(p => p.CNP == cnp);
         }
-        
+
+        SQLExceptions IAppRepository.InsertAngajat(IEnumerable<Angajat> angajat)
+        {
+            throw new NotImplementedException();
+        }
 
         SQLExceptions IAppRepository.InsertPontaje(string cnp)
         {
@@ -80,6 +89,19 @@ namespace Alone_Revisal.Repository
                 if (result == 0)
                     return SQLExceptions.UpdateFailed;
             }
+            return SQLExceptions.Ok;
+        }
+
+        SQLExceptions IAppRepository.InsertPontajeAll(IEnumerable<Pontaj> pontaje)
+        {
+            //insereaza lista de angajati pontati in LocalDB (tabela Pontaje)
+            _appDbContext.Pontaje.AddRange(pontaje);          
+          
+            var result = _appDbContext.SaveChanges();
+
+            if (result == 0)
+                return SQLExceptions.UpdateFailed;
+
             return SQLExceptions.Ok;
         }
     }

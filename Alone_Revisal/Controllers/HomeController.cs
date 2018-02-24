@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Alone_Revisal.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class HomeController : Controller
     {
         private IRevisalRepository _irevisal;
@@ -59,8 +59,19 @@ namespace Alone_Revisal.Controllers
         {
             ViewData["Mess"] = "Employee from Revisal";
 
-            return View(_irevisal.GetSalariatByCNP("1550704131229"));
+            // return View(_irevisal.GetSalariatByCNP("1550704131229"));
+            return View(_appRepository.GetPontajAll().ToList());
 
+        }
+        [HttpPost]
+        public IActionResult Pontaj(List<Pontaj> pontaj)
+        {
+            if (ModelState.IsValid)
+            {
+                var tmp = pontaj;
+                return RedirectToAction("Index");
+            }
+            return View("Pontaje");
         }
 
         public IActionResult UploadRevisalDatabase()

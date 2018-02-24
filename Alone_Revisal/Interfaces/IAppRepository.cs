@@ -11,6 +11,7 @@ namespace Alone_Revisal.Interfaces
     public interface IAppRepository
     {
         IEnumerable<Pontaj> GetPontajAll();
+        SQLExceptions InsertPontajeAll(IEnumerable<Pontaj> pontaje);
         Pontaj GetPontajByCNP(string cnp);
         SQLExceptions InsertPontaje(string cnp);
         IQueryable<Angajat> GetAngajatiActiviAll();

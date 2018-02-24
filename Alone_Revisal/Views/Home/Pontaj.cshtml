@@ -1,35 +1,51 @@
-﻿@model Alone_Revisal.RevisalModels.Salariat
+﻿@model List<Alone_Revisal.Models.Pontaj>
 
 @{
-    ViewData["Title"] = "Cucu_2";
+    ViewData["Title"] = "Pontaj";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Cucu_2</h2>
+<h2>Pontaj</h2>
 
 <h4>Salariat</h4>
 <hr />
+
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Cucu_2">
+        <form asp-action="Pontaj" asp-controller="Home"  method="post" role="form">
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Nume" class="control-label"></label>
-                <input asp-for="Nume" class="form-control" />
-                <span asp-validation-for="Nume" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Prenume" class="control-label"></label>
-                <input asp-for="Prenume" class="form-control" />
-                <span asp-validation-for="Prenume" class="text-danger"></span>
-            </div>
-            <input type="hidden" asp-for="CNP" />
+            <table>
+                <thead>
+                    <tr>
+                        <th><div class="form-group"><h4>Nume</h4></div></th>
+                        <th><div class="form-group"><h4>Prenume</h4></div></th>
+                        <th><div class="form-group"><h4>Prezent</h4></div></th>
+                        <th><div class="form-group"><h4>Absent</h4></div></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i=0; i < @Model.Count(); i++)
+                    {
+                    <tr>
+                        <td> <span>@Model[i].Nume</span></td>
+                        <td> <span>@Model[i].Prenume</span></td>
+                        <td> <input asp-for="@Model[i].Prezenta" type="checkbox" class="form-control"><input type="hidden" asp-for="@Model[i].CNP" /></td>
+                    </tr>
+                    }
+                </tbody>
+            </table>            
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
+
+
 
 <div>
     <a asp-action="Index">Back to List</a>
