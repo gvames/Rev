@@ -14,6 +14,8 @@ namespace Alone_Revisal.Interfaces
         Pontaj GetPontajByCNP(string cnp);
         SQLExceptions InsertPontaje(string cnp);
         IQueryable<Angajat> GetAngajatiActiviAll();
+        Angajat GetAngajatActivByCNP(string cnp);
         SQLExceptions InsertAngajat(IEnumerable<Angajat> angajat);
+        IQueryable<Santier> GetSantierAll();
     }
 }

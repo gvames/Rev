@@ -49,7 +49,7 @@ namespace Alone_Revisal.Controllers
         {
             ViewData["Mess"] = "Employee from Revisal";
 
-            var listaAngajatiActivi = _appRepository.GetAngajatiActiviAll();
+            List<Angajat> listaAngajatiActivi = _appRepository.GetAngajatiActiviAll().ToList();
 
             return View(listaAngajatiActivi);
 

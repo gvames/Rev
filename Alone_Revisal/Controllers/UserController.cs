@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Alone_Revisal.Interfaces;
 using Alone_Revisal.Models;
 using Alone_Revisal.ViewModels;
 using Microsoft.AspNetCore.Http;
@@ -15,11 +16,13 @@ namespace Alone_Revisal.Controllers
     {
         private readonly UserManager<Utilizator> userManager;
         private readonly RoleManager<ApplicationRole> roleManager;
+        private readonly IAppRepository _appRepository;
 
-        public UserController(UserManager<Utilizator> userManager, RoleManager<ApplicationRole> roleManager)
+        public UserController(UserManager<Utilizator> userManager, RoleManager<ApplicationRole> roleManager, IAppRepository appRepository)
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
+            _appRepository = appRepository;
         }
 
         [HttpGet]
@@ -35,15 +38,25 @@ namespace Alone_Revisal.Controllers
             return View(model);
         }
 
-        [HttpGet]
-        public IActionResult AddUser()
+        [HttpGet("User/AddUser/{cnp}")]
+        public IActionResult AddUser([FromRoute] string cnp)
         {
+            Angajat angajat = _appRepository.GetAngajatActivByCNP(cnp);
+
             UserViewModel model = new UserViewModel();
             model.ApplicationRoles = roleManager.Roles.Select(r => new SelectListItem
             {
                 Text = r.Name,
                 Value = r.Id
             }).ToList();
+            model.StantiereDisponibile = _appRepository.GetSantierAll().Select(s => new SelectListItem
+            {
+                Text = s.Locatie,
+                Value = s.IdSantier.ToString()
+            }).ToList();
+            model.CNP = angajat.CNP;
+            model.Name = angajat.Nume + " " + angajat.Prenume;
+
             return PartialView("_AddUser", model);
         }
 
@@ -57,6 +70,7 @@ namespace Alone_Revisal.Controllers
                     UserName = model.UserName,
                     Email = model.Email,
                     CNP = model.CNP,
+                    IdSantier = model.SantierID
                 };
                 IdentityResult result = await userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -67,7 +81,7 @@ namespace Alone_Revisal.Controllers
                         IdentityResult roleResult = await userManager.AddToRoleAsync(user, applicationRole.Name);
                         if (roleResult.Succeeded)
                         {
-                            return RedirectToAction("Index");
+                            return RedirectToAction("AngajatiActivi", "Home");
                         }
                     }
                 }

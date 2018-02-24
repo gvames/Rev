@@ -1,4 +1,8 @@
-﻿@model IEnumerable<Alone_Revisal.Models.Angajat>
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
+
+@model List<Alone_Revisal.Models.Angajat>
+@inject UserManager<Utilizator> UseruManager
 
 @{
     ViewData["Title"] = "Angajati activi";
@@ -20,25 +24,41 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @for (int i = 0; i < Model.Count(); i++)
                 {
                     <tr>
-                        <td>@item.Nume</td>
-                        <td>@item.Prenume</td>
-                        <td>@item.CNP</td>
+                        <td>@Model[i].Nume</td>
+                        <td>@Model[i].Prenume</td>
+                        <td>@Model[i].CNP</td>
                         <td>
-                            <a id="addEditApplicationRoleModal" data-toggle="modal" asp-action="AddEditApplicationRole" asp-route-id="@item.CNP" data-target="#modal-action-application-role"
+                            <a id="userDetails" data-toggle="modal" asp-route-id="@Model[i].CNP" 
                                class="btn btn-info">
-                                <i class="glyphicon glyphicon-pencil"></i>  Editeaza
+                                <i class="glyphicon glyphicon-user"></i>  Detalii Angajat
                             </a>
-                            <a id="deleteApplicationRoleModal" data-toggle="modal" asp-action="DeleteApplicationRole" asp-route-id="@item.CNP" data-target="#modal-action-application-role" class="btn btn-danger">
-                                <i class="glyphicon glyphicon-trash"></i>  Sterge
-                            </a>
+                            @if (UseruManager.Users.FirstOrDefault(s => s.CNP == Model[i].CNP) == null)
+                            {
+                                <a id="createEditUserModal" data-toggle="modal" asp-controller="User" asp-action="AddUser" asp-route-id="@Model[i].CNP" data-target="#modal-action-user" class="btn btn-info">
+                                    <i class="glyphicon glyphicon-plus-sign"></i>  Adaugare user
+                                </a>
+                            }
+                            else
+                            {
+                                <a id="updatePassword" data-toggle="modal" asp-route-id="@Model[i].CNP" class="btn btn-info">
+                                    <i class="glyphicon glyphicon-plus-sign"></i>  Update password
+                                </a>
+                            }
                         </td>
                     </tr>
+
                 }
             </tbody>
         </table>
     </div>
 </div>
 
+@Html.Partial("_Modal", new BootstrapModel { ID = "modal-action-user", AreaLabeledId = "modal-action-user-label", Size = ModalSize.Medium })
+
+@section scripts
+    {
+    <script src="~/js/user-index.js" asp-append-version="true"></script>
+}

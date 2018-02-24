@@ -20,9 +20,19 @@ namespace Alone_Revisal.Repository
             _appDbContext = appDbContext;
         }
 
+        public Angajat GetAngajatActivByCNP(string cnp)
+        {
+            return _appDbContext.Angajati.FirstOrDefault(a => a.CNP == cnp);
+        }
+
         public IQueryable<Angajat> GetAngajatiActiviAll()
         {
-            return _appDbContext.Angajati;
+            return _appDbContext.Angajati.Take(20);
+        }
+
+        public IQueryable<Santier> GetSantierAll()
+        {
+            return _appDbContext.Santiere;
         }
 
         public SQLExceptions InsertAngajat(IEnumerable<Angajat> angajati)
